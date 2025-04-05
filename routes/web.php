@@ -19,5 +19,12 @@ Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/plans', [PlanController::class, 'index'])->name('plans');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::middleware('auth')->group(function () {
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::middleware('can:view-users')->group(function () {
+        Route::get('/users', [UserController::class, 'index'])->name('users');
+    });
+});
