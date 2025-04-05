@@ -64,7 +64,7 @@
     <header>
         <div class="logo">
             <a href="{{ route('dashboard') }}" style="text-decoration: none; color: inherit;">
-                <img src="https://via.placeholder.com/40" alt="Logo" style="height: 40px;">
+                <img src="https://picsum.photos/30" alt="Logo" style="height: 40px;">
                 <strong>SampleName</strong>
             </a>
         </div>
