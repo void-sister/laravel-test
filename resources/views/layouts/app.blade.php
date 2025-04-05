@@ -71,10 +71,10 @@
 
         <nav>
             <a href="{{ route('dashboard') }}">Dashboard</a>
-            <a href="#">Plans</a>
+            <a href="{{ route('plans') }}">Plans</a>
             @auth
             @if(auth()->user()->isAdmin())
-            <a href="#">Users</a>
+            <a href="{{ route('users') }}">Users</a>
             @endif
             @endauth
         </nav>
