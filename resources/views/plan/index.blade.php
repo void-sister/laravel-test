@@ -13,7 +13,7 @@
                     <h6 class="card-subtitle mb-3 text-muted">${{ $plan->price }}/month</h6>
                     <ul class="list-unstyled flex-grow-1">
                         @foreach($plan->features as $key => $feature)
-                        <li>✔ {{ $key }}: {{ $feature }}</li>
+                            <li>✔ {{ $key }}: {{ format_truthy_value($feature) }}</li>
                         @endforeach
                     </ul>
                     <div class="mt-auto">
