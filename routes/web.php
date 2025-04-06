@@ -21,4 +21,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/users', [UserController::class, 'index'])->name('users');
     Route::get('/plans', [PlanController::class, 'index'])->name('plans');
+    Route::post('/plans/{plan}/subscribe', [PlanController::class, 'subscribe'])->name('plans.subscribe');
 });

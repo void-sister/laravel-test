@@ -2,6 +2,7 @@
 
 namespace App\Services\User;
 
+use App\Models\Plan;
 use App\Models\User;
 use App\Services\User\Dto\UserSearchDto;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -28,5 +29,20 @@ class UserService
         }
 
         return $query->paginate($dto->perPage);
+    }
+
+    /**
+     * Change the user's plan.
+     *
+     * @param User $user
+     * @param Plan $plan
+     * @return void
+     */
+    public function changePlan(User $user, Plan $plan): void
+    {
+        if ($user->plan_id !== $plan->id) {
+            $user->plan_id = $plan->id;
+            $user->save();
+        }
     }
 }

@@ -17,19 +17,17 @@
                         @endforeach
                     </ul>
                     <div class="mt-auto">
-                        <a href="#">
-                            <button type="button" class="btn btn-primary w-100"
-                                @if($currentUserPlanId == $plan->id)
-                                    disabled
-                                @endif
-                            >
+                        <form action="{{ route('plans.subscribe', $plan->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary w-100"
+                                @if($currentUserPlanId == $plan->id) disabled @endif>
                                 @if($currentUserPlanId == $plan->id)
                                     Current Plan
                                 @else
                                     Buy
                                 @endif
                             </button>
-                        </a>
+                        </form>
                     </div>
                 </div>
             </div>
