@@ -111,3 +111,17 @@ You can run the tests using the following command:
 ```bash
 docker compose exec app php artisan test
 ```
+
+### 11. Stop the application
+To stop the application, run:
+
+```bash
+docker compose down
+```
+
+### 12. Note
+
+Every user from the seeder has password
+```bash
+password
+```
