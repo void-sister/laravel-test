@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('/domains', [DashboardController::class, 'store'])->name('domains.store');
     Route::get('/users', [UserController::class, 'index'])->name('users');
     Route::get('/plans', [PlanController::class, 'index'])->name('plans');
     Route::post('/plans/{plan}/subscribe', [PlanController::class, 'subscribe'])->name('plans.subscribe');
