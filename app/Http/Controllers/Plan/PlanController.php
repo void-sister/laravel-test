@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Plan;
 
 use App\Http\Controllers\Controller;
+use App\Models\Plan;
+use App\Models\User;
 use App\Services\Plan\PlanService;
 use App\Services\User\UserService;
 use Illuminate\Http\RedirectResponse;
@@ -28,8 +30,12 @@ class PlanController extends Controller
      */
     public function index(): View
     {
+        /** @var User $user */
+        $user = Auth::user();
+
         $plans = $this->planService->getAll();
-        $currentUserPlanId = $this->planService->getCurrentUserPlanId(Auth::user());
+        $userPlan = $this->planService->getUserPlan($user);
+        $currentUserPlanId = $userPlan?->id;
 
         return view('plan.index', compact('plans', 'currentUserPlanId'));
     }

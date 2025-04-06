@@ -4,7 +4,6 @@ namespace App\Services\Plan;
 
 use App\Models\Plan;
 use App\Models\User;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Collection;
 
 class PlanService
@@ -19,8 +18,14 @@ class PlanService
         return Plan::all();
     }
 
-    public function getCurrentUserPlanId(User|Authenticatable $user): ?int
+    /**
+     * Get the user's plan.
+     *
+     * @param User $user
+     * @return Plan|null
+     */
+    public function getUserPlan(User $user): ?Plan
     {
-        return $user->plan_id;
+        return Plan::query()->where('id', $user->plan_id)->first();
     }
 }
